@@ -1,20 +1,18 @@
-from django.http import HttpResponse
-
 from django.shortcuts import render
 
 
 # views
 def home_page(request):
-    return HttpResponse("<h1>Home page</h1>")
+    return render(request, 'index.html', {'title': 'index page'})
 
 
 def about_page(request):
-    return HttpResponse("<h1>About page</h1>")
+    return render(request, 'about.html', {'title': 'about page'})
 
 
 def contact_page(request):
-    return HttpResponse("<h1>Contact page</h1>")
+    return render(request, 'contact.html', {'title': 'contact page'})
 
 
 def temp_page(request):
-    return render(request, 'hello.html', {'title': "Home Page"})
+    return render(request, 'hello.html', {'title': "hello Page"})
