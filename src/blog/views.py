@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import Http404
 
 # Create your views here.
 from .models import BlogPost
@@ -6,6 +7,11 @@ from .models import BlogPost
 
 # obj = BlogPost.objects.get(id=2)
 # view for viewing the BlogPost details
-def blog_post_details_page(request):
-    context = BlogPost.objects.get(id=1)
+# def blog_post_details_page(request):
+#     context = BlogPost.objects.get(id=1)
+#     return render(request, 'blog_post_details.html', {'context': context})
+
+# making the view dynamic or building dynamic urls
+def blog_post_details_page(request, post_id):
+    context = get_object_or_404(BlogPost, id=post_id)
     return render(request, 'blog_post_details.html', {'context': context})
