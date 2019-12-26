@@ -3,6 +3,7 @@ from django.http import Http404
 
 # Create your views here.
 from .models import BlogPost
+from .form import BlogPostForm
 
 
 # obj = BlogPost.objects.get(id=2)
@@ -43,8 +44,14 @@ def blog_post_list_view(request):
 # create
 def blog_post_create_view(request):
     # create an object using a form
-    template_name = 'blog/create.html'
-    context = {'title': 'Create Post', 'form': None}
+    form = BlogPostForm(request.POST or None)
+    if form.is_valid():
+        # print(form.cleaned_data)
+        obj = BlogPost.objects.create(**form.cleaned_data)
+        form = BlogPostForm()
+
+    template_name = 'form.html'
+    context = {'title': 'Create Post', 'form': form}
     return render(request, template_name, context=context)
 
 

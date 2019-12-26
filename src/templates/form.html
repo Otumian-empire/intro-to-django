@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block header %}{{ title }}{% endblock %}
+
+{% block content %}
+<form method="POST" action="">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Send</button>
+
+</form>
+{% endblock %}

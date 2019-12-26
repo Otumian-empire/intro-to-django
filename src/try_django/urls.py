@@ -17,7 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 from .views import (
-    home_page, about_page, contact_page, temp_page)
+    home_page,
+    about_page,
+    contact_page,
+    temp_page)
+
 from blog.views import (
     blog_post_create_view)
 

@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+# import form
+from .forms import ContactForm
+
 
 # views
 def home_page(request):
@@ -11,7 +14,17 @@ def about_page(request):
 
 
 def contact_page(request):
-    return render(request, 'contact.html', {'title': 'contact page'})
+    # print(request.POST)
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        print(form.cleaned_data)
+        form = ContactForm()
+    context = {
+        'title': 'contact page',
+        'form': form
+    }
+
+    return render(request, 'form.html', context=context)
 
 
 def temp_page(request):
