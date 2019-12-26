@@ -18,7 +18,10 @@ from django.urls import path
 
 from .views import (
     home_page, about_page, contact_page, temp_page)
-from blog.views import blog_post_details_page
+from blog.views import (
+    blog_post_list_view, blog_post_create_view,
+    blog_post_delete_view, blog_post_detail_view,
+    blog_post_update_view)
 
 
 urlpatterns = [
@@ -27,5 +30,9 @@ urlpatterns = [
     path('contact', contact_page),
     path('', home_page),
     path('temp_page/', temp_page),
-    path('blog/<str:slug>/', blog_post_details_page)
+    path('blog/', blog_post_list_view),
+    path('blog/<str:slug>/', blog_post_create_view),
+    path('blog/<str:slug>/', blog_post_detail_view),
+    path('blog/<str:slug>/', blog_post_update_view),
+    path('blog/<str:slug>/', blog_post_delete_view)
 ]
