@@ -45,7 +45,7 @@ def blog_post_create_view(request):
     # create an object using a form
     template_name = 'blog_post_create.html'
     context = {'title': 'Create Post', 'form': None}
-    return render(request, template_name, context)
+    return render(request, template_name, context=context)
 
 
 # read
@@ -54,7 +54,7 @@ def blog_post_detail_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
     template_name = 'blog_post_detail.html'
     context = {'title': 'Post Details', 'object': obj}
-    return render(request, template_name, context)
+    return render(request, template_name, context=context)
 
 
 # update
@@ -62,7 +62,7 @@ def blog_post_update_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
     template_name = 'blog_post_update.html'
     context = {'title': 'Update post', 'object': obj, 'form': None}
-    return render(request, template_name, context)
+    return render(request, template_name, context=context)
 
 
 # delete
@@ -70,4 +70,4 @@ def blog_post_delete_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
     template_name = 'blog_post_delete.html'
     context = {'title': 'Delete Post', 'object': obj, 'form': None}
-    return render(request, template_name, context)
+    return render(request, template_name, context=context)
