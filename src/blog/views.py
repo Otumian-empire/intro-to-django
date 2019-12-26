@@ -35,7 +35,7 @@ def blog_post_list_view(request):
     # query set
     # qs = BlogPost.objects.filter(title__icontains='e')
     qs = BlogPost.objects.all()
-    template_name = 'blog_post_list.html'
+    template_name = 'list.html'
     context = {'title': 'All Post', 'object_list': qs}
     return render(request, template_name, context=context)
 
@@ -43,7 +43,7 @@ def blog_post_list_view(request):
 # create
 def blog_post_create_view(request):
     # create an object using a form
-    template_name = 'blog_post_create.html'
+    template_name = 'blog/create.html'
     context = {'title': 'Create Post', 'form': None}
     return render(request, template_name, context=context)
 
@@ -52,7 +52,7 @@ def blog_post_create_view(request):
 def blog_post_detail_view(request, slug):
     # one object or detail view
     obj = get_object_or_404(BlogPost, slug=slug)
-    template_name = 'blog_post_detail.html'
+    template_name = 'blog/detail.html'
     context = {'title': 'Post Details', 'object': obj}
     return render(request, template_name, context=context)
 
@@ -60,7 +60,7 @@ def blog_post_detail_view(request, slug):
 # update
 def blog_post_update_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
-    template_name = 'blog_post_update.html'
+    template_name = 'blog/update.html'
     context = {'title': 'Update post', 'object': obj, 'form': None}
     return render(request, template_name, context=context)
 
@@ -68,6 +68,6 @@ def blog_post_update_view(request, slug):
 # delete
 def blog_post_delete_view(request, slug):
     obj = get_object_or_404(BlogPost, slug=slug)
-    template_name = 'blog_post_delete.html'
+    template_name = 'blog/delete.html'
     context = {'title': 'Delete Post', 'object': obj, 'form': None}
     return render(request, template_name, context=context)
